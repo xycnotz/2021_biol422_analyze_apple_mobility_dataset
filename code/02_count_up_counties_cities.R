@@ -21,7 +21,8 @@ state_data <- read.csv(input_file)
 # starting off with dplyr chains
 count_of_cities_counties <- state_data %>%
   select(geo_type, region, transportation_type) %>%
-  group_by(geo_type, transportation_type)%>%
+  group_by(geo_type, transportation_type) %>%
   tally()
 
+# write out the result of the dplyr chain to csv
 write.csv(count_of_cities_counties, "output/florida_cities_counties_counts.csv")
