@@ -11,6 +11,7 @@ This data is available from the following URL:
 https://covid19.apple.com/mobility
 
 ### Chang Log
+* 2021-09-21: Added second script to tally up cities and counties using dplyr for a given state for different transportation types.
 * 2021-09-20: Initialize git repository for the project.
 * 2021-09-19: Refactored code to call in subset function from a different file.
 * 2021-09-14: A new version of the data file was downloaded. Code was refactored to be more general and allow for any state to be subset from the larger file.
