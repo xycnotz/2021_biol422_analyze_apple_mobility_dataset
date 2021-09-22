@@ -22,12 +22,13 @@ state_subset_mobility_data <- function(input_file_name, state_to_subset) {
     stop("ERROR: No rows matching give state name. Was a typo made?")
   }
   else{
+    # Remove any spaces from name with "-" to prevent any parsing errors
     # Save state subset data to csv file in the output directory
     write.csv(state_data, file = paste0("output/",
                                         tools::file_path_sans_ext(
                                           basename(input_file_name)),
                                         "_",
-                                        state_to_subset,
+                                        gsub("\\s", "-", state_to_subset),
                                         ".csv"))
   }
 }
