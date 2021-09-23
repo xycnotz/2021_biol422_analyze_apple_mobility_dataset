@@ -1,8 +1,8 @@
 # Analysis of the Apple Mobility Data during COVID-19
 
-Xienyam Chiu
-xchiu@dons.usfca.edu
-September 01, 2021
+Xienyam Chiu  
+xchiu@dons.usfca.edu  
+September 01, 2021  
 
 ## Project Aims
 The aim of this project is to analyze the mobility data provided by Apple from Apple Maps requests.
