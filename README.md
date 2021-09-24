@@ -2,7 +2,6 @@
 
 Xienyam Chiu  
 xchiu@dons.usfca.edu  
-September 01, 2021  
 
 ## Project Aims
 The aim of this project is to analyze the mobility data provided by Apple from Apple Maps requests.
@@ -10,7 +9,8 @@ The aim of this project is to analyze the mobility data provided by Apple from A
 This data is available from the following URL:
 https://covid19.apple.com/mobility
 
-### Chang Log
+### Change Log
+* 2021-09-24: Added defensive programming to transportation type function to prevent loading nonexistent or empty data files
 * 2021-09-22: Created Github repository for project and pushed commits to Github
 * 2021-09-21: Added second script to tally up cities and counties using dplyr for a given state for different transportation types.
 * 2021-09-20: Initialize git repository for the project.
