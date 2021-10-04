@@ -9,6 +9,9 @@
 
 # load functions
 source("code/functions/state_subset_mobility_data.R")
+state_subset_mobility_data(
+  input_file_name = "data/data_raw/applemobilitytrends-2021-09-20.csv",
+  state_to_subset = "Florida")
 
 # call function for multiple states
 for (state in c("Florida", "Alabama",

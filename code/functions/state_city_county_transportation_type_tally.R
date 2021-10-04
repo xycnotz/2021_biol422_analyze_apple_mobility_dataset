@@ -22,7 +22,7 @@ state_transportation_tally <- function(state_data) {
   if (file.exists(input_file) == FALSE) {
     stop("ERROR: This file does not exist. Was there a typo in the state name?")
   }
-  state_data <- read.csv(input_file)
+  state_data <- readr::read_csv(input_file)
 
   # Prevent any empty csv files from running in the script
   if (nrow(state_data) == 0) {
@@ -36,7 +36,7 @@ state_transportation_tally <- function(state_data) {
       tally()
 
     # write out the result of the dplyr chain to csv
-    write.csv(count_cities_counties,
+    readr::write_csv(count_cities_counties,
               paste0("output/", tools::file_path_sans_ext(basename(input_file)),
                      "_cities_counties_counts", ".csv"))
   }
