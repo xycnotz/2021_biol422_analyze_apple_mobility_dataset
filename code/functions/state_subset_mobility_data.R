@@ -12,7 +12,8 @@
 library("dplyr")
 state_subset_mobility_data <- function(input_file_name, state_to_subset) {
   # read in the complete csv file
-  full_covid_data <- readr::read_csv(file = input_file_name, show_col_types = FALSE)
+  full_covid_data <- readr::read_csv(file = input_file_name,
+                                     show_col_types = FALSE)
 
   # subset the dataset to only include rows where sub.region matches the given
   # state
