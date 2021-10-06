@@ -9,11 +9,13 @@
 # load the package "dplyr"
 library("dplyr")
 
-state_transportation_tally <- function(state_data) {
+state_transportation_tally <- function(path_name, state) {
   # load in the dataset from the previous script
   # because state names have spaces removed in file name, space needs to be
-  # replaced with a "-" to be in line with naming
-  input_file <- paste0("output/applemobilitytrends-2021-09-20_",
+  # replaced with a "_" to be in line with naming
+  input_file <- paste0("output/subsetted_states_wide/",
+                       path_name,
+                       "_",
                        gsub("\\s", "_", state), ".csv")
 
   # TODO: add defensive programming if statement to prevent bad calls
@@ -40,5 +42,6 @@ state_transportation_tally <- function(state_data) {
               paste0("output/subsetted_states_tallied",
                      tools::file_path_sans_ext(basename(input_file)),
                      "_cities_counties_counts", ".csv"))
+    return(count_cities_counties)
   }
 }
