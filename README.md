@@ -10,6 +10,9 @@ This data is available from the following URL:
 https://covid19.apple.com/mobility
 
 ### Change Log
+* 2021-10-05: Updated Rmarkdown file and revised functions to fix previous syntax errors
+* 2021-10-04: Created Rmarkdown file to make a report of analysis
+* 2021-09-29: Created function to convert subset data from wide to long format
 * 2021-09-24: Added defensive programming to transportation type function to prevent loading nonexistent or empty data files
 * 2021-09-22: Created Github repository for project and pushed commits to Github
 * 2021-09-21: Added second script to tally up cities and counties using dplyr for a given state for different transportation types.
