@@ -1,5 +1,5 @@
 ##take in 01 csvs to change into long form
-longer_state <- function(file, column_data) {
+state_data_to_long <- function(file, column_data) {
   ## load the data from the 01 script to convert the wide data to long
   state_data <- readr::read_csv(file)
 
@@ -9,7 +9,7 @@ longer_state <- function(file, column_data) {
                                      cols = contains(c("2020", "2021")))
   longer_data <- dplyr::rename(longer_data, sub_region = `sub-region`)
   readr::write_csv(longer_data,
-                   paste0("output/",
+                   paste0("output/subsetted_states_long/",
                           tools::file_path_sans_ext(basename(file)),
                           "_long.csv"))
   return(longer_data)

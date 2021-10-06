@@ -14,7 +14,7 @@ state_transportation_tally <- function(state_data) {
   # because state names have spaces removed in file name, space needs to be
   # replaced with a "-" to be in line with naming
   input_file <- paste0("output/applemobilitytrends-2021-09-20_",
-                       gsub("\\s", "-", state), ".csv")
+                       gsub("\\s", "_", state), ".csv")
 
   # TODO: add defensive programming if statement to prevent bad calls
   # Check if current file directory is present in the output folder
@@ -37,7 +37,8 @@ state_transportation_tally <- function(state_data) {
 
     # write out the result of the dplyr chain to csv
     readr::write_csv(count_cities_counties,
-              paste0("output/", tools::file_path_sans_ext(basename(input_file)),
+              paste0("output/subsetted_states_tallied",
+                     tools::file_path_sans_ext(basename(input_file)),
                      "_cities_counties_counts", ".csv"))
   }
 }

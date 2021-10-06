@@ -26,11 +26,12 @@ state_subset_mobility_data <- function(input_file_name, state_to_subset) {
   else{
     # Remove any spaces from name with "-" to prevent any parsing errors
     # Save state subset data to csv file in the output directory
-    readr::write_csv(state_data, file = paste0("output/",
+    readr::write_csv(state_data, file = paste0("output/subsetted_states_long",
                                         tools::file_path_sans_ext(
                                           basename(input_file_name)),
                                         "_",
-                                        gsub("\\s", "-", state_to_subset),
+                                        gsub("\\s", "_", state_to_subset),
                                         ".csv"))
+    return(state_data)
   }
 }
