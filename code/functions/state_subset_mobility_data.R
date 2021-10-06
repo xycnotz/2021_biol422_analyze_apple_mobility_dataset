@@ -9,7 +9,10 @@
 # create a function to subset any US state out of the full dataset
 # this should also create an output CSV file named corresponding to the state
 # that is subsetted
+
+# load up the library package dplyr
 library("dplyr")
+
 state_subset_mobility_data <- function(input_file_name, state_to_subset) {
   # read in the complete csv file
   full_covid_data <- readr::read_csv(file = input_file_name,
@@ -17,7 +20,6 @@ state_subset_mobility_data <- function(input_file_name, state_to_subset) {
 
   # subset the dataset to only include rows where sub.region matches the given
   # state
-
   state_data <- full_covid_data %>% filter(`sub-region` == state_to_subset)
 
   # Check if subsetted data has any data in it

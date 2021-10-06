@@ -1,5 +1,14 @@
+# The goal of this script is to take in the state subset data and convert it
+# to long form from wide form then write out the new dataframe
+# to a file in output/subsetted_states_long
+
+# Xienyam Chiu
+# xchiu@dons.usfca.edu
+# September 29, 2021
+
+# Load up the library package dplyr
 library("dplyr")
-##take in 01 csvs to change into long form
+
 state_data_to_long <- function(file) {
   ## load the data from the 01 script to convert the wide data to long
   state_data <- readr::read_csv(file)
