@@ -39,7 +39,7 @@ state_transportation_tally <- function(path_name, state) {
 
     # write out the result of the dplyr chain to csv
     readr::write_csv(count_cities_counties,
-              paste0("output/subsetted_states_tallied",
+              paste0("output/subsetted_states_tallied/",
                      tools::file_path_sans_ext(basename(input_file)),
                      "_cities_counties_counts", ".csv"))
     return(count_cities_counties)
