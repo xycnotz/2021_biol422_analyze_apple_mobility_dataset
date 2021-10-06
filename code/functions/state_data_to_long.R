@@ -1,5 +1,5 @@
 ##take in 01 csvs to change into long form
-state_data_to_long <- function(file, column_data) {
+state_data_to_long <- function(file) {
   ## load the data from the 01 script to convert the wide data to long
   state_data <- readr::read_csv(file)
 
