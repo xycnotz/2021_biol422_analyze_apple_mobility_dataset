@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 
 ```{r set-parameters}
 # set the state to work with
-state_to_analyze <- "South Carolina"
+state_to_analyze <- "Florida"
 
 # sanitize the state name for output files
 state_no_spaces <- gsub("\\s", "_", state_to_analyze)
@@ -41,15 +41,15 @@ source("code/functions/state_transportation_tally.R")
 source("code/functions/state_data_to_long.R")
 ```
 
-## Background and Objectives 
+## Project Description  
 
 This rmarkdown file will use `ggplot2` [@ggplot2] and `dplyr` [@dplyr] packages to analyze the Apple maps mobility data from the time before the COVID-19 pandemic through the initial shutdowns and the continuing changes over the course of the pandemic.
 
-The goal will be to create a subset to a particular state, tally up the number of cities and counties in that state with mobililty data, and then to make several plots to visual the data subsets.
+The goal will be to create a subset to a particular state, tally up the number of cities and counties in that state with mobility data, and then to make several plots to visual the data subsets. Analysis will focus on driving and public transportation mobility and the impacts that the COVID-19 pandemic had for Apple maps users. 
 
 The state that this document will analyze is `r state_to_analyze`.
 
-## Data Processing 
+## Subsetting data
 
 ```{r subset-state}
 # subset out to the chose state using the variables set above
@@ -115,7 +115,8 @@ timeseries_plot <- long_subset %>%
                      state_to_analyze,
                      "during COVID"),
        x = "Date",
-       y = "Mean relative mobility")
+       y = "Mean relative mobility") +
+  ylim(0, max(long_subset$relative_mobility))
 ggsave(plot = timeseries_plot,
        filename = paste0("output/figures/",
                          core_name,
@@ -124,6 +125,31 @@ ggsave(plot = timeseries_plot,
                          "_timeseries_plot.png"))
 
 timeseries_plot
+```
+
+```{r plot-transit-time-series}
+# produce a line plot of the relative mobility of transit across the state
+# with date on the X axis and mean relative mobility on the Y axis
+transit_plot <- long_subset %>%
+  filter(transportation_type == "transit") %>%
+  group_by(date) %>%
+  summarize(mean_mobility = mean(relative_mobility)) %>%
+  ggplot(aes(x = lubridate::ymd(date),
+             y = mean_mobility)) +
+  geom_line() +
+  labs(title = paste("Statewide mean relative transit mobility levels in",
+                     state_to_analyze,
+                     "during COVID"),
+       x = "Date",
+       y = "Mean relative mobility") +
+  ylim(0, max(long_subset$relative_mobility))
+ggsave(plot = transit_plot,
+       filename = paste0("output/figures/",
+                         core_name,
+                         "_",
+                         state_no_spaces,
+                         "_transitseries_plot.png"))
+transit_plot
 ```
 
 ## Session Info
