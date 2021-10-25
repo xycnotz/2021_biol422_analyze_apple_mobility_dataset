@@ -13,16 +13,16 @@
 
 if [ $# -eq 0 ]
 then
-	echo "To run this script, supply two arguments:"
-	echo "The first is the name of the state ot be analyzed."
-	echo "The second is the path to the mobility data csv file."
-	exit 1
+    echo "To run this script, supply two arguments:"
+    echo "The first is the name of the state ot be analyzed."
+    echo "The second is the path to the mobility data csv file."
+    exit 1
 fi
 
 state=$1
 state=${state// /_}
 Rscript -e "rmarkdown::render('analyze_apple_mobility_dataset.rmd', \
-	params = list(state = '$1', \
-	data = '$2'), \
-	output_dir = 'output', \
-	output_file = 'analyze_apple_mobility_$state')"
+  params = list(state = '$1', \
+  data = '$2'), \
+  output_dir = 'output', \
+  output_file = 'analyze_apple_mobility_$state')"
