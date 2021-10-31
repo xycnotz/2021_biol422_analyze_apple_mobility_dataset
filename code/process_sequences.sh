@@ -1,32 +1,29 @@
 #!/bin/sh
 
-# count the number of entries here:
-zcat /blast-db/sars-cov-2-seq-data/2020-10-15_ncbi_sars_cov_2_sequences.fasta.gz | zgrep ">" | wc -l
-# generic check all entries
-zgrep ">" $1| wc -l  > final_output.txt
-# try to write out a grep version of the file for easier iteration 
+# This bash script is used to calculate the total number of SARS-CoV2 sequences
+# as well as show the number of sequences isolated in each country in
+# reverse numeric order
 
-# assign to file
-zgrep ">" $1| cut -d "|" -f 3 | sort -u # apparently same output as above, more accurate as fewer countries removed 
-# read in above file as an array and use a for loop to count via awk
-# final fasta file has country at index 21
+# This script expects one command line paramter for the path to the
+# compressed FASTA file
 
+# Xienyam Chiu
+# October 31, 2021
+# xchiu@dons.usfca.edu
 
-# remove everything except country and count entries based on country, will require a for loop with a list of countries
+if [ $# -eq 0 ]
+then
+	echo "Please supply one argument to run this script"
+	echo "This script expect the path to the compressed FASTA file."
+	exit 1
+fi
 
+# Count the number of SARS-CoV2 sequences
+echo "Beginning total SARS-CoV2 sequnce tally"
+echo "Total SARS-CoV2 sequences: $(zgrep ">" "$1"| wc -l)"  > output/final_output.txt
+echo "Sequence count complete"
 
-# write out all entries concatenated to a txt
-# read in txt then sort numerically 
-
-mapfile -t array_name < unique_countries.txt
-for ((i= 0; i < ${#array_name[@]}; i++))
-do
-	echo -n "${array_name[$i]} "
-	zgrep "${array_name[$i]}" $1| wc -l>> 
-	# append to txt file
-done
-
-# sort output based on number count 
-sort -k 2nr output_file.txt >> final_output.txt
-
-# use bioawk to count the bp of each sequence and report lengths ><29000
+# Count up all the SARS-CoV2 sequences by country and sort in descending order
+echo "Beginning SARS-CoV2 sequence tally by country"
+zgrep ">" "$1"| cut -d "|" -f 21 | sort | uniq -c | sort -nr >> output/final_output.txt
+echo "Country sequence tally complete"
