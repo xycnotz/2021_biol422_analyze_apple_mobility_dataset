@@ -10,6 +10,7 @@ This data is available from the following URL:
 https://covid19.apple.com/mobility
 
 ### Change Log
+* 2021-10-31: Created bash script to read in and process SARS-CoV2 sequences from FASTA file
 * 2021-10-17: Parameterized Rmd file to be run using a bash script
 * 2021-10-08: Created third figure in RMarkdown file and fixed axis scaling in figures
 * 2021-10-05: Updated Rmarkdown file and revised functions to fix previous syntax errors
