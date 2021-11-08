@@ -1,5 +1,6 @@
 #!/bin/sh
 
+set -euo pipefail
 
 # This bash script is used to calculate the total number of SARS-CoV2 sequences
 # as well as show the number of sequences isolated in each country in
