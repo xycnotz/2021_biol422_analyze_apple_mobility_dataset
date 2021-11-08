@@ -27,7 +27,6 @@ else
 	if [ $# -eq 2 ] && [ "$2" = "ALL" ]
 	then
 		# Count the number of SARS-CoV2 sequences
-		touch output/final_output.txt
 		echo "Beginning total SARS-CoV2 sequnce tally"
 		echo "Total SARS-CoV2 sequences: $(zgrep ">" "$1"| wc -l)"  > output/final_output.txt
 		echo "Sequence count complete"
