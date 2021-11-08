@@ -1,12 +1,13 @@
 ---
 title: "Analysis of COVID-19 Apple Mobility Data"
 author: "Xienyam Chiu"
-date: "10/3/2021"
+date: "11/7/2021"
 output: html_document
 bibliography: references.bib
 params:
   state: "Florida"
   data: "data/data_raw/applemobilitytrends-2021-09-20.csv"
+  seqdata: "output/final_output.txt"
 ---
 
 ```{r setup, include=FALSE}
@@ -153,6 +154,9 @@ ggsave(plot = transit_plot,
                          state_no_spaces,
                          "_transitseries_plot.png"))
 transit_plot
+```
+```{r plot-sequence-data, fig.height=12}
+
 ```
 
 ## Session Info
