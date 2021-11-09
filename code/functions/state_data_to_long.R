@@ -16,7 +16,7 @@ state_data_to_long <- function(file) {
   ## As data has the date pattern of YYYY-MM-DD, select all the columns with a
   ## year in the column name.
   longer_data <- tidyr::pivot_longer(state_data,
-                                     cols = starts_with("20"))
+                                     cols = matches("20[0-9][0-9]-"))
   longer_data <- longer_data %>% rename(sub_region = `sub-region`,
                                         relative_mobility = value,
                                         date = name)
