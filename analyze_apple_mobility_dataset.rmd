@@ -7,7 +7,7 @@ bibliography: references.bib
 params:
   state: "Florida"
   data: "data/data_raw/applemobilitytrends-2021-09-20.csv"
-  seqdata: "output/final_output.txt"
+  seqdata: "output/sequence_summary.txt"
 ---
 
 ```{r setup, include=FALSE}
