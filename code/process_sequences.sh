@@ -37,6 +37,6 @@ else
 		zgrep ">" "$1"| cut -d "|" -f 21 | sort | uniq -c | sort -nr >> output/final_output_verbose.txt
 		echo "Country sequence tally complete"
 	else
-		zgrep ">" "$1"| cut -d "|" -f 21 | sort | uniq -c | sort -nr >> output/final_output.txt
+		zgrep ">" "$1"| cut -d "|" -f 21 | sort | uniq -c | sort -nr
 	fi
 fi
