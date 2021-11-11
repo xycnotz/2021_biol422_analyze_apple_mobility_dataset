@@ -25,7 +25,7 @@ fi
 state=$1
 state=${state// /_}
 
-RMD_PARAMS="params = list(state = '$1', data = '$2', seqdata = '3')"
+RMD_PARAMS="params = list(state = '$1', data = '$2', seqdata = '$3')"
 RMD_OUTPUT="output_dir = 'output', output_file = 'analyze_apple_mobility_$state'"
 
 Rscript -e "rmarkdown::render('analyze_apple_mobility_dataset.rmd', $RMD_PARAMS, $RMD_OUTPUT)"
