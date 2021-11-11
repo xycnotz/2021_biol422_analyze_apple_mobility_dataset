@@ -29,12 +29,12 @@ else
 	then
 		# Count the number of SARS-CoV2 sequences
 		echo "Beginning total SARS-CoV2 sequnce tally"
-		echo "Total SARS-CoV2 sequences: $(zgrep ">" "$1"| wc -l)"  > output/final_output.txt
+		echo "Total SARS-CoV2 sequences: $(zgrep ">" "$1"| wc -l)"  > output/final_output_verbose.txt
 		echo "Sequence count complete"
 
 		# Count up all the SARS-CoV2 sequences by country and sort in descending order
 		echo "Beginning SARS-CoV2 sequence tally by country"
-		zgrep ">" "$1"| cut -d "|" -f 21 | sort | uniq -c | sort -nr >> output/final_output.txt
+		zgrep ">" "$1"| cut -d "|" -f 21 | sort | uniq -c | sort -nr >> output/final_output_verbose.txt
 		echo "Country sequence tally complete"
 	else
 		zgrep ">" "$1"| cut -d "|" -f 21 | sort | uniq -c | sort -nr >> output/final_output.txt
