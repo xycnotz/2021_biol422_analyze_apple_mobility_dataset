@@ -1,12 +1,13 @@
 ---
 title: "Analysis of COVID-19 Apple Mobility Data"
 author: "Xienyam Chiu"
-date: "10/3/2021"
+date: "11/7/2021"
 output: html_document
 bibliography: references.bib
 params:
   state: "Florida"
   data: "data/data_raw/applemobilitytrends-2021-09-20.csv"
+  seqdata: "output/sequence_summary.txt"
 ---
 
 ```{r setup, include=FALSE}
@@ -153,6 +154,31 @@ ggsave(plot = transit_plot,
                          state_no_spaces,
                          "_transitseries_plot.png"))
 transit_plot
+```
+```{r plot-sequence-data, fig.height=12}
+# read in the count of the sequences by country (2 columns)
+seqs_by_country <- readr::read_table(params$seqdata,
+                                     col_names = c("count",
+                                                   "country"))
+
+# check that we have the right number of columns
+stopifnot(ncol(seqs_by_country) == 2)
+
+# make a sideways barplot, log scale x axis, with countries on the y axis
+# and the counts of sequences in each on the x, sorted by count
+seq_count_plot <- ggplot(data = seqs_by_country,
+                         aes(x = count,
+                             y = reorder(country, count))) +
+   geom_col() +
+   scale_x_log10() +
+   labs(title = "Count of SARS-CoV-2 seqiences per country",
+        x = "Count of Sequences",
+        y = "Country Name")
+
+ggsave(plot = seq_count_plot,
+       filename = "output/figures/seq_count_plot.png")
+
+seq_count_plot
 ```
 
 ## Session Info

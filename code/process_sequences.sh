@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -euo pipefail
 
 # This bash script is used to calculate the total number of SARS-CoV2 sequences
 # as well as show the number of sequences isolated in each country in
@@ -27,7 +28,6 @@ else
 	if [ $# -eq 2 ] && [ "$2" = "ALL" ]
 	then
 		# Count the number of SARS-CoV2 sequences
-		touch output/final_output.txt
 		echo "Beginning total SARS-CoV2 sequnce tally"
 		echo "Total SARS-CoV2 sequences: $(zgrep ">" "$1"| wc -l)"
 		echo "Sequence count complete"
